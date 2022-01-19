@@ -1,5 +1,12 @@
 # DhubSearch
 
+## Description 
+
+Application that consumes REST API and that allows a user to enter a Github username into a form,submit it, and see names and descriptions of that person's public repositories.
+
+## Author
+Abdirahman Dubow
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.1.
 
 ## Development server
@@ -25,3 +32,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Technologies Used
+* Typescript
+* HTML 
+* CSS 
+* JavaScript
+
+## contact information
+email: dubowhamaan@gmail.com
+phone number: +2547-20513467
+
+## License
+### [MIT LICENSE]
