@@ -14,7 +14,7 @@ export class UserService {
   repository: Repo;
   repositories:any= []
   UserInfo :any = []
-  url= environment.ApiUrl;
+  url= environment;
 
   constructor(private httpClient:HttpClient,private router:Router) {
     this.user = new User("","","","",0,new Date(),new Date());
@@ -37,7 +37,7 @@ export class UserService {
    let promise = new Promise<ApiResponse | void>((resolve,reject)=>{
      this.httpClient.get < any > (this.url + username, {
        headers: new HttpHeaders({
-         'Authorization': 'Bearer ' + this.apiUrl,
+         'Authorization': 'Bearer ' 
 
        })
      }).toPromise()
@@ -68,9 +68,9 @@ export class UserService {
     console.log("=====",username);
 
    let promise = new Promise<void>((resolve,reject)=>{
-     this.httpClient.get < any > (this.url + username + "/repos", {
+     this.httpClient.get < any > ( username + "/repos", {
        headers: new HttpHeaders({
-         'Authorization': 'Bearer ' + this.apiUrl
+         'Authorization': 'Bearer ' 
        })
      }).toPromise()
      .then(response=>{

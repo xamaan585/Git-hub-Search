@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../user';
+import { UserService } from '../services/user.service';
+import { FormControl , FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Repo } from '../repo';
 
 @Component({
   selector: 'app-search-form',
@@ -7,9 +12,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchFormComponent implements OnInit {
 
-  constructor() { }
+  User!:User
+  username!: string;
+  userService!: UserService;
+
+  constructor(private router:Router,private GitUserService:UserService) { 
+    this.userService=GitUserService
+  }
 
   ngOnInit(): void {
   }
-
+  getUsername(){
+    this.userService.getUserData(this.username);
+    this.userService.getRepo(this.username);
+    this.User = this.userService.user;
+    this.router.navigate(['display']);
+  }
 }
