@@ -1,1 +1,39 @@
-<p>search-display works!</p>
+<div class="container mt-3">
+    <div class="spinner-border" role="status" [hidden]="isComplete">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="row">
+      <div class="fixed col-lg-4 m-2" style="width: 18rem;">
+        <button class="btn btn-success" (click)="back()"><i class="fa fa-arrow-left"></i> BACK</button>
+        <hr>
+        <p class="name">{{user.name}}</p>
+        <img class="card-img-top" src="{{user.avatar_url}}" alt="Card image cap" height="200">
+        <div class="details mt-1">
+          <p>Username: <span>{{user.login}}</span></p>
+          <p>Public repositories: <span>{{user.public_repos}}</span></p>
+          <p>Joined on : <span>{{user.created_at|date}}</span></p>
+          <a href="{{user. html_url}}" target="_blank" appHighlighting>View in Github</a>
+        </div>
+      </div>
+  
+      <div class="col-md-2"></div>
+      <div class="col-lg-6 mt-3 repos">
+        <h1 class="p-1">REPOSITORIES</h1>
+        <ul *ngFor=" let repo of repository">
+          <li>{{repo.name}}</li>
+          <span>
+            <p>{{repo.description}}</p>
+          </span>
+          <span>
+            <p>Languages:{{repo.language}}</p>
+          </span>
+          <span>
+            <i class="fa fa-copy">Clone url: </i><a href="{{repo.clone_url}}" target="_blank"
+              appHighlighting>{{repo.clone_url}} </a>
+          </span>
+          <span><a href="{{repo.html_url}}" target="_blank" appHighlighting>View in Github</a></span>
+  
+        </ul>
+      </div>
+    </div>
+  </div>
