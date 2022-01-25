@@ -4,6 +4,7 @@ import { User } from '../user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {environment } from '../../environments/environment';
 import { Router } from '@angular/router';
+import { Token } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,10 @@ export class UserService {
   repository: Repo;
   repositories:any= []
   UserInfo :any = []
-  url= environment;
+  Token = environment.token;
+  url = environment.url
 
-  constructor(private httpClient:HttpClient,private router:Router) {
+  constructor(private httpClient:HttpClient,private router:Router,) {
     this.user = new User("","","","",0,new Date(),new Date());
     this.repository = new Repo("","","","","",new Date(),new Date())
   }
@@ -31,13 +33,12 @@ export class UserService {
      html_url: string, 
      public_repos: number,
      created_at: Date,
-     updated_at:Date
    }
 
    let promise = new Promise<ApiResponse | void>((resolve,reject)=>{
      this.httpClient.get < any > (this.url + username, {
        headers: new HttpHeaders({
-         'Authorization': 'Bearer ' 
+         'Authorization': this.Token 
 
        })
      }).toPromise()
@@ -68,9 +69,9 @@ export class UserService {
     console.log("=====",username);
 
    let promise = new Promise<void>((resolve,reject)=>{
-     this.httpClient.get < any > ( username + "/repos", {
+     this.httpClient.get < any > (this.url + username + "/repos", {
        headers: new HttpHeaders({
-         'Authorization': 'Bearer ' 
+         'Authorization': this.Token
        })
      }).toPromise()
      .then(response=>{

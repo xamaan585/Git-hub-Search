@@ -22,7 +22,8 @@ export class SearchDisplayComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUserData(this.username);
-    this.user = this.userService.repositories;
+    this.user = this.userService.user;
+    
 
     this.userService.getRepo(this.username);
     this.repository = this.userService.repositories;
